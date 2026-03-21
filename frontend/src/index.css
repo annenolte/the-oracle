@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Inter:wght@400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FFF8F0 0%, #FFF0E6 25%, #F0E6FF 50%, #E6F0FF 75%, #FFF8F0 100%);
+  color: #2D1B4E;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+::-webkit-scrollbar-thumb { background: rgba(139,92,246,0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(139,92,246,0.5); }
+
+/* Glass card utility - now for light backgrounds */
+.glass {
+  backdrop-filter: blur(16px);
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.8);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+/* Mythology pattern backgrounds as decorative overlays */
+.pattern-greek {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 18px,
+      rgba(245,200,66,0.08) 18px,
+      rgba(245,200,66,0.08) 20px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 18px,
+      rgba(245,200,66,0.08) 18px,
+      rgba(245,200,66,0.08) 20px
+    );
+}
+
+.pattern-norse {
+  background-image:
+    radial-gradient(circle at 20% 50%, rgba(91,164,207,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(123,104,238,0.1) 0%, transparent 50%),
+    repeating-linear-gradient(
+      60deg,
+      transparent,
+      transparent 30px,
+      rgba(123,104,238,0.06) 30px,
+      rgba(123,104,238,0.06) 32px
+    );
+}
+
+.pattern-egyptian {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 24px,
+      rgba(26,188,156,0.06) 24px,
+      rgba(26,188,156,0.06) 26px
+    ),
+    repeating-linear-gradient(
+      120deg,
+      transparent,
+      transparent 24px,
+      rgba(255,215,0,0.06) 24px,
+      rgba(255,215,0,0.06) 26px
+    ),
+    repeating-linear-gradient(
+      240deg,
+      transparent,
+      transparent 24px,
+      rgba(0,206,209,0.06) 24px,
+      rgba(0,206,209,0.06) 26px
+    );
+}
+
+.pattern-eastasian {
+  background-image:
+    radial-gradient(circle at 30% 30%, rgba(231,76,60,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 70% 70%, rgba(255,64,129,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(249,168,212,0.06) 0%, transparent 60%);
+}
+
+/* Fun decorative elements */
+.mythology-divider-greek {
+  background: linear-gradient(90deg, transparent, #F5C842, #FF8C00, #F5C842, transparent);
+  height: 2px;
+}
+
+.mythology-divider-norse {
+  background: linear-gradient(90deg, transparent, #5BA4CF, #7B68EE, #5BA4CF, transparent);
+  height: 2px;
+}
+
+.mythology-divider-egyptian {
+  background: linear-gradient(90deg, transparent, #1ABC9C, #FFD700, #1ABC9C, transparent);
+  height: 2px;
+}
+
+.mythology-divider-eastasian {
+  background: linear-gradient(90deg, transparent, #E74C3C, #FF4081, #E74C3C, transparent);
+  height: 2px;
+}
