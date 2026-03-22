@@ -8,6 +8,7 @@ function AuthForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState('')
   const [loading, setLoading] = useState(false)
   const { signIn, signUp, configError } = useAuth()
   const navigate = useNavigate()
@@ -25,6 +26,7 @@ function AuthForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setError('')
+    setSuccess('')
     setLoading(true)
 
     if (configError) {
@@ -33,16 +35,29 @@ function AuthForm() {
       return
     }
 
-    const { error: authError } = isSignUp
-      ? await signUp(email, password)
-      : await signIn(email, password)
+    if (isSignUp) {
+      const { error: authError, data } = await signUp(email, password)
+      setLoading(false)
 
-    setLoading(false)
-
-    if (authError) {
-      setError(getThemedError(authError.message))
+      if (authError) {
+        setError(getThemedError(authError.message))
+      } else if (data?.user?.identities?.length === 0) {
+        setError('A soul with this identity already walks among us.')
+      } else if (data?.user && !data?.session) {
+        // Email confirmation required
+        setSuccess('The stars have aligned! Check your email to confirm your account, then return to sign in.')
+      } else {
+        navigate('/select')
+      }
     } else {
-      navigate('/select')
+      const { error: authError } = await signIn(email, password)
+      setLoading(false)
+
+      if (authError) {
+        setError(getThemedError(authError.message))
+      } else {
+        navigate('/select')
+      }
     }
   }
 
@@ -63,7 +78,7 @@ function AuthForm() {
         <div className="flex mb-8 bg-purple-50/60 rounded-xl p-1">
           <button
             type="button"
-            onClick={() => { setIsSignUp(false); setError('') }}
+            onClick={() => { setIsSignUp(false); setError(''); setSuccess('') }}
             className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
               !isSignUp
                 ? 'bg-gradient-to-r from-amber-400 to-orange-400 text-white shadow-md shadow-amber-300/30'
@@ -74,7 +89,7 @@ function AuthForm() {
           </button>
           <button
             type="button"
-            onClick={() => { setIsSignUp(true); setError('') }}
+            onClick={() => { setIsSignUp(true); setError(''); setSuccess('') }}
             className={`flex-1 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 ${
               isSignUp
                 ? 'bg-gradient-to-r from-purple-500 to-teal-400 text-white shadow-md shadow-purple-300/30'
@@ -129,6 +144,19 @@ function AuthForm() {
                 className="text-rose-500 text-sm text-center italic px-2"
               >
                 {error}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {success && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                className="text-emerald-600 text-sm text-center italic px-2"
+              >
+                {success}
               </motion.div>
             )}
           </AnimatePresence>

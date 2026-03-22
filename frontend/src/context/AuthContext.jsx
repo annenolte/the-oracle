@@ -40,8 +40,8 @@ export function AuthProvider({ children }) {
     if (supabaseConfigError || !supabase) {
       return { error: new Error(supabaseConfigError) }
     }
-    const { error } = await supabase.auth.signUp({ email, password })
-    return { error }
+    const { data, error } = await supabase.auth.signUp({ email, password })
+    return { data, error }
   }
 
   const signOut = async () => {
