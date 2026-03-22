@@ -95,9 +95,10 @@ async def chat(request: Request):
             print(f"[ORACLE ERROR] {error_msg}")
             if "429" in error_msg or "rate" in error_msg.lower() or "quota" in error_msg.lower():
                 yield f"data: {json.dumps({'error': 'The spirits need a moment to rest... try again shortly.'})}\n\n"
+            elif "403" in error_msg or "leaked" in error_msg.lower() or "api key" in error_msg.lower():
+                yield f"data: {json.dumps({'error': 'The Oracle is momentarily unavailable. Please try again soon.'})}\n\n"
             else:
-                error_data = json.dumps({"error": f"The Oracle's vision grows cloudy... {error_msg}"})
-                yield f"data: {error_data}\n\n"
+                yield f"data: {json.dumps({'error': 'The Oracle is momentarily unavailable. Please try again soon.'})}\n\n"
             yield "data: [DONE]\n\n"
 
     return StreamingResponse(generate(), media_type="text/event-stream")
