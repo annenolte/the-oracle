@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { characters, characterRelationships } from '../data/characters'
 import { avatarMap } from './characters'
+import { useTheme } from '../context/ThemeContext'
 
 // Circular layout positions for 8 characters
 const positions = [
@@ -19,6 +20,7 @@ function RelationshipGraph() {
   const [isOpen, setIsOpen] = useState(false)
   const [hoveredRelation, setHoveredRelation] = useState(null)
   const [hoveredChar, setHoveredChar] = useState(null)
+  const { isDark } = useTheme()
 
   const charPositions = {}
   characters.forEach((c, i) => {
@@ -135,7 +137,7 @@ function RelationshipGraph() {
                       {/* Circle bg */}
                       <circle
                         cx={pos.x} cy={pos.y} r="22"
-                        fill="white"
+                        fill={isDark ? '#1e293b' : 'white'}
                         stroke={char.colors.primary}
                         strokeWidth={isHighlighted ? 3 : 2}
                         opacity={isHighlighted ? 1 : 0.8}
@@ -149,7 +151,7 @@ function RelationshipGraph() {
                       <text
                         x={pos.x} y={pos.y + 36}
                         textAnchor="middle"
-                        fill="#475569"
+                        fill={isDark ? '#cbd5e1' : '#475569'}
                         fontSize="11"
                         fontWeight="600"
                       >
@@ -180,7 +182,7 @@ function RelationshipGraph() {
               </svg>
 
               {/* Legend */}
-              <div className="flex justify-center gap-6 mt-2 text-xs text-slate-400">
+              <div className="flex justify-center gap-6 mt-2 text-xs text-slate-400 dark:text-slate-500">
                 <span className="flex items-center gap-1.5">
                   <span className="w-6 h-0.5 bg-slate-400 inline-block" /> Direct bond
                 </span>

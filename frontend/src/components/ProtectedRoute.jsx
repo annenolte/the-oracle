@@ -7,7 +7,7 @@ function ProtectedRoute({ children }) {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-purple-300/30 dark:border-white/30 border-t-purple-500 dark:border-t-white rounded-full animate-spin" />
       </div>
     )
   }

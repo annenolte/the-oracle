@@ -18,6 +18,8 @@ const item = {
 function SuggestedQuestions({ questions, onSelect, color = '#F5C842' }) {
   if (!questions || questions.length === 0) return null
 
+  const isDark = document.documentElement.classList.contains('dark')
+
   return (
     <motion.div
       variants={container}
@@ -30,16 +32,16 @@ function SuggestedQuestions({ questions, onSelect, color = '#F5C842' }) {
           key={index}
           variants={item}
           onClick={() => onSelect(question)}
-          className="text-left text-sm px-4 py-3 rounded-xl bg-white/80 backdrop-blur-sm border border-purple-200/40 text-slate-700 hover:text-slate-900 transition-all duration-300 shadow-sm"
+          className="text-left text-sm px-4 py-3 rounded-xl bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-purple-200/40 dark:border-purple-700/40 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-slate-100 transition-all duration-300 shadow-sm"
           onMouseEnter={(e) => {
             e.currentTarget.style.borderColor = `${color}80`
             e.currentTarget.style.boxShadow = `0 4px 20px ${color}20`
             e.currentTarget.style.backgroundColor = `${color}15`
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.borderColor = 'rgba(196,181,253,0.4)'
+            e.currentTarget.style.borderColor = isDark ? 'rgba(126,87,194,0.4)' : 'rgba(196,181,253,0.4)'
             e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)'
-            e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.8)'
+            e.currentTarget.style.backgroundColor = isDark ? 'rgba(30,41,59,0.8)' : 'rgba(255,255,255,0.8)'
           }}
         >
           {question}

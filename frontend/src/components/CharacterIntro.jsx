@@ -254,7 +254,7 @@ function BioBox({ bioKey, value, meta, color, characterId }) {
     <motion.div
       variants={itemVariant}
       onClick={() => setExpanded(!expanded)}
-      className="bg-white/70 backdrop-blur-sm rounded-xl border transition-all duration-200 hover:shadow-md cursor-pointer select-none overflow-hidden"
+      className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-xl border transition-all duration-200 hover:shadow-md cursor-pointer select-none overflow-hidden"
       style={{
         borderColor: expanded ? `${color}60` : `${color}25`,
         boxShadow: expanded ? `0 4px 16px ${color}15` : 'none',
@@ -303,7 +303,7 @@ function BioBox({ bioKey, value, meta, color, characterId }) {
             className="overflow-hidden"
           >
             <div className="px-3 pb-3">
-              <p className="text-slate-700 text-xs leading-relaxed">{value}</p>
+              <p className="text-slate-700 dark:text-slate-300 text-xs leading-relaxed">{value}</p>
 
               {/* Show map for origin */}
               {isOrigin && (
@@ -341,7 +341,7 @@ function CharacterIntro({ character }) {
       {/* Character header card */}
       <motion.div
         variants={itemVariant}
-        className="bg-white/80 backdrop-blur-xl rounded-2xl overflow-hidden border-2 mb-4 shadow-lg"
+        className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-2xl overflow-hidden border-2 mb-4 shadow-lg"
         style={{ borderColor: `${character.colors.primary}40` }}
       >
         {/* Cultural border on top */}
@@ -352,8 +352,8 @@ function CharacterIntro({ character }) {
         <div className="p-5 flex items-center gap-4">
           {AvatarComponent && <AvatarComponent size={80} hover={false} />}
           <div>
-            <h3 className="text-xl font-bold text-slate-800">{character.name}</h3>
-            <p className="text-slate-500 text-sm italic">{character.tagline}</p>
+            <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200">{character.name}</h3>
+            <p className="text-slate-500 dark:text-slate-400 text-sm italic">{character.tagline}</p>
             <span
               className="inline-block text-xs font-semibold px-2.5 py-0.5 rounded-full mt-1.5"
               style={{ backgroundColor: character.colors.primary, color: '#fff' }}
@@ -386,7 +386,7 @@ function CharacterIntro({ character }) {
       {/* Hint text */}
       <motion.p
         variants={itemVariant}
-        className="text-center text-xs text-slate-400 mt-2 italic"
+        className="text-center text-xs text-slate-400 dark:text-slate-500 mt-2 italic"
       >
         Tap any card above to learn more
       </motion.p>
@@ -397,7 +397,7 @@ function CharacterIntro({ character }) {
           className="flex-grow h-px"
           style={{ background: `linear-gradient(to right, ${character.colors.primary}40, transparent)` }}
         />
-        <span className="text-xs text-slate-400 italic">Chat begins below</span>
+        <span className="text-xs text-slate-400 dark:text-slate-500 italic">Chat begins below</span>
         <div
           className="flex-grow h-px"
           style={{ background: `linear-gradient(to left, ${character.colors.primary}40, transparent)` }}

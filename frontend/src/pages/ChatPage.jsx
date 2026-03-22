@@ -340,12 +340,12 @@ function ChatPage() {
 
       {/* Header */}
       <div
-        className="flex items-center gap-3 px-4 py-3 backdrop-blur-xl bg-white/70 border-b z-20"
+        className="flex items-center gap-3 px-4 py-3 backdrop-blur-xl bg-white/70 dark:bg-slate-900/80 border-b z-20"
         style={{ borderColor: `${character.colors.primary}40` }}
       >
         <button
           onClick={() => navigate('/select')}
-          className="p-2 rounded-lg hover:bg-purple-50 text-slate-500 hover:text-slate-800 transition-all"
+          className="p-2 rounded-lg hover:bg-purple-50 dark:hover:bg-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 transition-all"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M19 12H5" />
@@ -356,7 +356,7 @@ function ChatPage() {
         {AvatarComponent && <AvatarComponent size={40} hover={false} />}
 
         <div>
-          <h2 className="text-slate-800 font-semibold text-sm">{character.name}</h2>
+          <h2 className="text-slate-800 dark:text-slate-200 font-semibold text-sm">{character.name}</h2>
           <span
             className="text-xs font-medium px-2 py-0.5 rounded-full"
             style={{
@@ -426,7 +426,7 @@ function ChatPage() {
 
       {/* Input Bar */}
       <div
-        className="px-4 py-3 backdrop-blur-xl bg-white/70 border-t"
+        className="px-4 py-3 backdrop-blur-xl bg-white/70 dark:bg-slate-900/80 border-t"
         style={{ borderColor: `${character.colors.primary}30` }}
       >
         <form onSubmit={handleSubmit} className="flex items-center gap-2 max-w-4xl mx-auto">
@@ -443,7 +443,7 @@ function ChatPage() {
             onKeyDown={handleKeyDown}
             placeholder={`Ask ${character.name}...`}
             disabled={isLoading}
-            className="flex-grow px-4 py-3 bg-white/60 border border-purple-200/50 rounded-xl text-slate-800 text-sm placeholder-slate-400 focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-100 transition-all disabled:opacity-50"
+            className="flex-grow px-4 py-3 bg-white/60 dark:bg-slate-800/60 border border-purple-200/50 dark:border-purple-700/50 rounded-xl text-slate-800 dark:text-slate-200 text-sm placeholder-slate-400 focus:outline-none focus:border-purple-300 focus:ring-2 focus:ring-purple-100 dark:focus:ring-purple-800 transition-all disabled:opacity-50"
           />
           <motion.button
             type="submit"

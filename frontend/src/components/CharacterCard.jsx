@@ -28,7 +28,7 @@ function CharacterCard({ character, onClick, dailyWisdom }) {
       className="cursor-pointer"
     >
       <div
-        className="relative backdrop-blur-xl bg-white/80 border-2 rounded-3xl overflow-hidden transition-all duration-300 flex flex-col items-center text-center"
+        className="relative backdrop-blur-xl bg-white/80 dark:bg-slate-800/80 border-2 rounded-3xl overflow-hidden transition-all duration-300 flex flex-col items-center text-center"
         style={{
           borderColor: isHovered ? character.colors.primary : `${character.colors.primary}30`,
           boxShadow: isHovered
@@ -62,7 +62,7 @@ function CharacterCard({ character, onClick, dailyWisdom }) {
           </div>
 
           {/* Name */}
-          <h3 className="text-slate-800 text-lg font-semibold mb-1">{character.name}</h3>
+          <h3 className="text-slate-800 dark:text-slate-200 text-lg font-semibold mb-1">{character.name}</h3>
 
           {/* Mythology tag */}
           <span
@@ -76,7 +76,7 @@ function CharacterCard({ character, onClick, dailyWisdom }) {
           </span>
 
           {/* Tagline */}
-          <p className="text-slate-600 text-sm leading-relaxed">{character.tagline}</p>
+          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{character.tagline}</p>
 
           {/* Daily Wisdom */}
           {dailyWisdom && (

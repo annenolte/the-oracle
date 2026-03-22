@@ -68,14 +68,14 @@ function AuthForm() {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className="w-full max-w-md mx-auto"
     >
-      <div className="backdrop-blur-xl bg-white/80 border border-purple-200/50 rounded-2xl p-8 shadow-lg shadow-purple-200/20">
+      <div className="backdrop-blur-xl bg-white/80 dark:bg-slate-800/80 border border-purple-200/50 dark:border-purple-700/50 rounded-2xl p-8 shadow-lg shadow-purple-200/20 dark:shadow-purple-900/20">
         {/* Fun subtitle */}
         <p className="text-center text-purple-500/70 text-sm font-medium tracking-wider uppercase mb-6">
           Seek the wisdom of the ancients
         </p>
 
         {/* Toggle */}
-        <div className="flex mb-8 bg-purple-50/60 rounded-xl p-1">
+        <div className="flex mb-8 bg-purple-50/60 dark:bg-slate-700/60 rounded-xl p-1">
           <button
             type="button"
             onClick={() => { setIsSignUp(false); setError(''); setSuccess('') }}
@@ -120,7 +120,7 @@ function AuthForm() {
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
               required
-              className="w-full px-4 py-3 bg-purple-50/50 border border-purple-200/30 rounded-xl text-purple-900 placeholder-purple-400/50 focus:outline-none focus:border-purple-400/50 focus:bg-white focus:ring-2 focus:ring-purple-200/30 transition-all duration-300"
+              className="w-full px-4 py-3 bg-purple-50/50 dark:bg-slate-700/50 border border-purple-200/30 dark:border-purple-700/30 rounded-xl text-purple-900 dark:text-slate-200 placeholder-purple-400/50 dark:placeholder-slate-500 focus:outline-none focus:border-purple-400/50 focus:bg-white dark:focus:bg-slate-700 focus:ring-2 focus:ring-purple-200/30 dark:focus:ring-purple-800/30 transition-all duration-300"
             />
           </div>
           <div>
@@ -131,7 +131,7 @@ function AuthForm() {
               placeholder="Password"
               required
               minLength={6}
-              className="w-full px-4 py-3 bg-purple-50/50 border border-purple-200/30 rounded-xl text-purple-900 placeholder-purple-400/50 focus:outline-none focus:border-purple-400/50 focus:bg-white focus:ring-2 focus:ring-purple-200/30 transition-all duration-300"
+              className="w-full px-4 py-3 bg-purple-50/50 dark:bg-slate-700/50 border border-purple-200/30 dark:border-purple-700/30 rounded-xl text-purple-900 dark:text-slate-200 placeholder-purple-400/50 dark:placeholder-slate-500 focus:outline-none focus:border-purple-400/50 focus:bg-white dark:focus:bg-slate-700 focus:ring-2 focus:ring-purple-200/30 dark:focus:ring-purple-800/30 transition-all duration-300"
             />
           </div>
 

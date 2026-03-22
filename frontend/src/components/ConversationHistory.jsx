@@ -22,7 +22,7 @@ function ConversationHistory({ conversations, characters, onSelect, onDelete }) 
 
   return (
     <div className="w-full">
-      <h3 className="text-slate-700 text-sm font-semibold mb-3 px-1">Recent Conversations</h3>
+      <h3 className="text-slate-700 dark:text-slate-300 text-sm font-semibold mb-3 px-1">Recent Conversations</h3>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -45,7 +45,7 @@ function ConversationHistory({ conversations, characters, onSelect, onDelete }) 
                 exit={{ opacity: 0, x: 20 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => onSelect(conversation)}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/70 border border-purple-100/50 hover:bg-white/90 hover:border-purple-200 hover:shadow-md hover:shadow-purple-100/30 cursor-pointer transition-all duration-200 group"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-white/70 dark:bg-slate-700/50 border border-purple-100/50 dark:border-purple-800/50 hover:bg-white/90 dark:hover:bg-slate-700/80 hover:border-purple-200 dark:hover:border-purple-600 hover:shadow-md hover:shadow-purple-100/30 cursor-pointer transition-all duration-200 group"
               >
                 {/* Character mini avatar */}
                 <div className="flex-shrink-0">
@@ -58,10 +58,10 @@ function ConversationHistory({ conversations, characters, onSelect, onDelete }) 
 
                 {/* Conversation info */}
                 <div className="flex-grow min-w-0">
-                  <p className="text-slate-800 text-sm font-medium truncate">
+                  <p className="text-slate-800 dark:text-slate-200 text-sm font-medium truncate">
                     {conversation.title || 'New conversation'}
                   </p>
-                  <p className="text-slate-400 text-xs">
+                  <p className="text-slate-400 dark:text-slate-500 text-xs">
                     {character?.name || 'Unknown'} &middot; {formatDate(conversation.updated_at || conversation.created_at)}
                   </p>
                 </div>

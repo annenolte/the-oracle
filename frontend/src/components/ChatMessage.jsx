@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import ReactMarkdown from 'react-markdown'
 import { avatarMap } from './characters'
 import { API_BASE } from '../lib/api'
+import { useTheme } from '../context/ThemeContext'
 import ShareQuoteModal from './ShareQuoteModal'
 
 // Module-level singleton so only one message plays at a time
@@ -37,6 +38,7 @@ function SpinnerIcon() {
 function ChatMessage({ message, character, isNew, userQuestion }) {
   const isUser = message.role === 'user'
   const AvatarComponent = avatarMap[character?.id]
+  const { isDark } = useTheme()
   const [isLoading, setIsLoading] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [hasError, setHasError] = useState(false)
@@ -163,24 +165,28 @@ function ChatMessage({ message, character, isNew, userQuestion }) {
             className={`rounded-2xl px-4 py-3 ${
               isUser
                 ? 'rounded-br-md'
-                : 'bg-white/90 backdrop-blur-sm rounded-bl-md shadow-sm'
+                : `${isDark ? 'bg-slate-800/90' : 'bg-white/90'} backdrop-blur-sm rounded-bl-md shadow-sm`
             }`}
             style={
               isUser
                 ? {
-                    backgroundColor: `${character?.colors?.primary || '#7C3AED'}25`,
-                    color: '#1e293b',
+                    backgroundColor: `${character?.colors?.primary || '#7C3AED'}${isDark ? '35' : '25'}`,
+                    color: isDark ? '#e2e8f0' : '#1e293b',
                   }
                 : {
                     borderLeft: `4px solid ${character?.colors?.primary || '#7C3AED'}`,
-                    color: '#1e293b',
+                    color: isDark ? '#e2e8f0' : '#1e293b',
                   }
             }
           >
             {isUser ? (
-              <p className="text-sm leading-relaxed whitespace-pre-wrap text-slate-800">{message.content}</p>
+              <p className={`text-sm leading-relaxed whitespace-pre-wrap ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>{message.content}</p>
             ) : (
-              <div className="text-sm leading-relaxed prose prose-sm max-w-none prose-headings:text-slate-800 prose-p:text-slate-700 prose-strong:text-slate-800 prose-li:text-slate-700 prose-a:text-purple-600 [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:mb-2 [&_ol]:mb-2 [&_li]:mb-0.5">
+              <div className={`text-sm leading-relaxed prose prose-sm max-w-none [&_p]:mb-2 [&_p:last-child]:mb-0 [&_ul]:mb-2 [&_ol]:mb-2 [&_li]:mb-0.5 ${
+                isDark
+                  ? 'prose-headings:text-slate-200 prose-p:text-slate-300 prose-strong:text-slate-200 prose-li:text-slate-300 prose-a:text-purple-400'
+                  : 'prose-headings:text-slate-800 prose-p:text-slate-700 prose-strong:text-slate-800 prose-li:text-slate-700 prose-a:text-purple-600'
+              }`}>
                 <ReactMarkdown>{message.content}</ReactMarkdown>
               </div>
             )}
