@@ -1,4 +1,4 @@
-# The Oracle
+# MythosAI
 
 **Live site:** https://the-oracle-pi.vercel.app
 
