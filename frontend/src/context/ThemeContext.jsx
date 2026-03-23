@@ -5,7 +5,7 @@ const ThemeContext = createContext(null)
 export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('oracle-theme')
-    return saved === 'dark'
+    return saved !== 'light'
   })
 
   useEffect(() => {
