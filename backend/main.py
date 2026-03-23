@@ -37,7 +37,7 @@ def strip_markdown(text: str) -> str:
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-app = FastAPI(title="The Oracle", description="Mythological wisdom for the modern age")
+app = FastAPI(title="MythosAI", description="Mythological wisdom for the modern age")
 
 app.add_middleware(
     CORSMiddleware,
@@ -69,7 +69,7 @@ async def chat(request: Request):
         return {"error": "Character not found"}
 
     model = genai.GenerativeModel(
-        model_name="gemini-2.5-flash",
+        model_name="gemini-2.0-flash-lite",
         system_instruction=character["system_prompt"],
     )
 
