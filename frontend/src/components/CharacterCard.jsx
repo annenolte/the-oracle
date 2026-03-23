@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { avatarMap } from './characters'
 import { culturalBorders, culturalPatternBgs } from './CulturalPatterns'
+import AuraEffect from './AuraEffect'
 
 const mythologyColors = {
   Greek: '#F5C842',
@@ -54,11 +55,14 @@ function CharacterCard({ character, onClick, dailyWisdom }) {
         )}
 
         <div className="relative z-10 p-6 pt-3 flex flex-col items-center">
-          {/* Avatar */}
-          <div className="mb-4">
-            {AvatarComponent && (
-              <AvatarComponent size={100} hover={isHovered} />
-            )}
+          {/* Avatar with aura */}
+          <div className="relative mb-4">
+            <AuraEffect characterId={character.id} isHovered={isHovered} size={100} />
+            <div className="relative z-10">
+              {AvatarComponent && (
+                <AvatarComponent size={100} hover={isHovered} />
+              )}
+            </div>
           </div>
 
           {/* Name */}
