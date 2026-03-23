@@ -136,7 +136,7 @@ function CharacterSelect() {
         </div>
 
         {/* Feature buttons row */}
-        <div className="flex flex-nowrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-2 mb-6">
           <button
             onClick={handleSurpriseMe}
             className="flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl text-xs font-medium bg-amber-500 text-white shadow-lg shadow-amber-300/20 hover:bg-amber-600 transition-all whitespace-nowrap"

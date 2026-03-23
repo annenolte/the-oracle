@@ -303,7 +303,7 @@ function ChatPage() {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="min-h-screen flex flex-col"
+      className="h-screen flex flex-col overflow-hidden"
     >
       {/* Dramatic character entrance overlay */}
       <AnimatePresence>
@@ -340,7 +340,7 @@ function ChatPage() {
 
       {/* Header */}
       <div
-        className="flex items-center gap-3 px-4 py-3 backdrop-blur-xl bg-white/70 dark:bg-slate-900/80 border-b z-20"
+        className="flex-shrink-0 flex items-center gap-3 px-4 py-3 backdrop-blur-xl bg-white/70 dark:bg-slate-900/80 border-b z-20"
         style={{ borderColor: `${character.colors.primary}40` }}
       >
         <button
@@ -371,7 +371,7 @@ function ChatPage() {
 
       {/* Cultural border under header */}
       {BorderComponent && (
-        <div className="z-20">
+        <div className="flex-shrink-0 z-20">
           <BorderComponent color={character.colors.primary} opacity={0.4} height={14} />
         </div>
       )}
@@ -430,14 +430,14 @@ function ChatPage() {
 
       {/* Cultural border above input */}
       {BorderComponent && (
-        <div style={{ transform: 'scaleY(-1)' }}>
+        <div className="flex-shrink-0" style={{ transform: 'scaleY(-1)' }}>
           <BorderComponent color={character.colors.primary} opacity={0.25} height={10} />
         </div>
       )}
 
       {/* Input Bar */}
       <div
-        className="px-4 py-3 backdrop-blur-xl bg-white/70 dark:bg-slate-900/80 border-t"
+        className="flex-shrink-0 px-4 py-3 backdrop-blur-xl bg-white/70 dark:bg-slate-900/80 border-t"
         style={{ borderColor: `${character.colors.primary}30` }}
       >
         <form onSubmit={handleSubmit} className="flex items-center gap-2 max-w-4xl mx-auto">
