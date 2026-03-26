@@ -9,7 +9,7 @@ Supabase <br>
   1. Authentication — sign up, sign in, sign out (email/password via Supabase Auth)
   2. Conversations — stores each chat session (who started it, which character, title)
   3. Messages — stores every message sent/received in each conversation
-  4. Journal entries — stores bookmarked wisdom from characters
+  4. Journal entries — stores bookmarked wisdom from the characters
 
 Vercel<br>
   Hosts the MythosAI React frontend. It auto-deploys from GitHub and serves the UI that users interact with,
